@@ -10,7 +10,7 @@ import com.example.uipeformance.R;
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
-    private Button mHierarchyBtn, mOverdrawBtn, mGCBtn, mUIBtn, mCacheBtn, mListViewBtn;
+    private Button mHierarchyBtn, mOverdrawBtn, mGCBtn, mUIBtn, mRecyclerViewBtn, mListViewBtn, mBitmapBtn;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,10 +23,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         mGCBtn.setOnClickListener(this);
         mUIBtn = findViewById(R.id.btn_ui);
         mUIBtn.setOnClickListener(this);
-        mCacheBtn = findViewById(R.id.btn_cache);
-        mCacheBtn.setOnClickListener(this);
+        mRecyclerViewBtn = findViewById(R.id.btn_recyclerview);
+        mRecyclerViewBtn.setOnClickListener(this);
         mListViewBtn = findViewById(R.id.btn_listview);
         mListViewBtn.setOnClickListener(this);
+        mBitmapBtn = findViewById(R.id.btn_bitmap);
+        mBitmapBtn.setOnClickListener(this);
     }
 
     @Override
@@ -45,9 +47,12 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btn_ui:
                 intent.setClass(MainActivity.this, UIConsumeActivity.class);
                 break;
-            case R.id.btn_cache:
+            case R.id.btn_recyclerview:
                 break;
             case R.id.btn_listview:
+                break;
+            case R.id.btn_bitmap:
+                intent.setClass(MainActivity.this, BitmapActivity.class);
                 break;
         }
         startActivity(intent);

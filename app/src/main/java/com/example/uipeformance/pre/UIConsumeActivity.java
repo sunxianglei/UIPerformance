@@ -18,25 +18,21 @@ public class UIConsumeActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.pre_activity_uiconsume);
-        makeLag();
+        makeJank();
     }
 
-    private void makeLag(){
+    private void makeJank(){
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
                 try {
                     // 模拟复杂操作
                     Thread.sleep(1000);
-                    int a = 0;
-                    for(int i=0;i<1000000;i++){
-                        a++;
-                    }
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
             }
-        }, 2000);
+        }, 1000);
     }
 
 }

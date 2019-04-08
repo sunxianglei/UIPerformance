@@ -27,6 +27,8 @@
             android:theme="@style/AppThemeOver"/>
         <activity android:name=".pre.UIConsumeActivity" />
         <activity android:name=".after.UIConsumeActivity" />
+        <activity android:name=".pre.BitmapActivity" />
+        <activity android:name=".after.BitmapActivity" />
      </application>
 
 </manifest>
