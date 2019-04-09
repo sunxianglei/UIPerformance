@@ -28,12 +28,15 @@ public class RecyclerViewActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private RecyclerViewAdapter adaper;
     private Handler mHandler = new Handler();
-    private List<String> datas = new ArrayList<>();
+    private List<List<String>> datas = new ArrayList<>();
 
     @Override
-    public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
-        super.onCreate(savedInstanceState, persistentState);
+    public void onCreate(@Nullable Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
         setContentView(R.layout.pre_activity_recycler);
+        initRecycler();
+        initRefreshLayout();
+        requestRefresh();
     }
 
     private void initRecycler(){
@@ -64,7 +67,7 @@ public class RecyclerViewActivity extends AppCompatActivity {
                     @Override
                     public void run() {
                         requestLoadMore();
-                        refreshLayout.finishRefresh();
+                        refreshLayout.finishLoadMore();
                     }
                 }, 1000);
 
@@ -85,7 +88,11 @@ public class RecyclerViewActivity extends AppCompatActivity {
 
     private void addDatas(){
         for(int i=0;i<20;i++) {
-            datas.add("你好" + i);
+            List<String> data = new ArrayList<>();
+            for(int j=0;j<10;j++) {
+                data.add("你好" +i+j);
+            }
+            datas.add(data);
         }
     }
 

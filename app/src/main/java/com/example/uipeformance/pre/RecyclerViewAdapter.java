@@ -1,7 +1,10 @@
 package com.example.uipeformance.pre;
 
 import android.content.Context;
+import android.support.annotation.NonNull;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,9 +23,9 @@ import java.util.List;
 public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapter.Holder> {
 
     private Context context;
-    private List<String> datas;
+    private List<List<String>> datas;
 
-    public RecyclerViewAdapter(Context context, List<String> datas){
+    public RecyclerViewAdapter(Context context, List<List<String>> datas){
         this.context = context;
         this.datas = datas;
         if(datas == null){
@@ -30,7 +33,7 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
         }
     }
 
-    public void setDatas(List<String> datas){
+    public void setDatas(List<List<String>> datas){
         this.datas = datas;
         notifyDataSetChanged();
     }
@@ -38,12 +41,17 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
     @Override
     public Holder onCreateViewHolder(ViewGroup parent, int viewType) {
-        return new Holder(LayoutInflater.from(context).inflate(R.layout.item_recycler_view, parent, false));
+        Log.d("RecyclerViewAdapter", "创建view：");
+        RecyclerView innerRV = new RecyclerView(parent.getContext());
+        innerRV.setLayoutManager(new LinearLayoutManager(parent.getContext(),
+                LinearLayoutManager.HORIZONTAL, false));
+        return new Holder(innerRV);
     }
 
     @Override
     public void onBindViewHolder(Holder holder, int position) {
-        holder.textView.setText(datas.get(position));
+        Log.d("RecyclerViewAdapter", "绑定view：" + position);
+        holder.recyclerView.setAdapter(new RecyclerViewSubAdapter(context, datas.get(position)));
     }
 
     @Override
@@ -52,11 +60,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
     }
 
     public class Holder extends RecyclerView.ViewHolder{
-        private TextView textView;
+        private RecyclerView recyclerView;
 
         public Holder(View itemView) {
             super(itemView);
-            textView = (TextView)itemView.findViewById(R.id.tv_desc);
+            recyclerView = (RecyclerView) itemView;
+
         }
     }
 }
