@@ -29,6 +29,10 @@
         <activity android:name=".after.UIConsumeActivity" />
         <activity android:name=".pre.BitmapActivity" />
         <activity android:name=".after.BitmapActivity" />
+        <activity android:name=".pre.ListViewActivity" />
+        <activity android:name=".after.ListViewActivity" />
+        <activity android:name=".pre.RecyclerViewActivity" />
+        <activity android:name=".after.RecyclerViewActivity" />
      </application>
 
 </manifest>

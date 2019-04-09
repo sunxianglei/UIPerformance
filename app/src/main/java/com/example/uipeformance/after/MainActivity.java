@@ -46,10 +46,13 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 intent.setClass(MainActivity.this, GCActivity.class);
                 break;
             case R.id.btn_ui:
+                intent.setClass(MainActivity.this, UIConsumeActivity.class);
                 break;
             case R.id.btn_recyclerview:
+                intent.setClass(MainActivity.this, RecyclerViewActivity.class);
                 break;
             case R.id.btn_listview:
+                intent.setClass(MainActivity.this, ListViewActivity.class);
                 break;
             case R.id.btn_bitmap:
                 intent.setClass(MainActivity.this, BitmapActivity.class);
